@@ -1,7 +1,6 @@
 from ultralytics import YOLO
 import cv2
-
-model = YOLO("model/best.pt")
+from services.model_loader import model
 
 def detect_video(video_path):
 

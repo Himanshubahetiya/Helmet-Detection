@@ -2,9 +2,7 @@ from ultralytics import YOLO
 import cv2
 import os
 import uuid
-
-# Load model once
-model = YOLO("model/best.pt")
+from services.model_loader import model
 
 def detect_image(image_path):
 

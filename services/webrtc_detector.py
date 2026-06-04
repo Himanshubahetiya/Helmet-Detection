@@ -3,8 +3,7 @@ from streamlit_webrtc import VideoProcessorBase
 import av
 import cv2
 import os
-
-model = YOLO("model/best.pt")
+from services.model_loader import model
 
 os.makedirs("outputs/videos", exist_ok=True)
 
