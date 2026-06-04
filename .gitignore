@@ -12,7 +12,6 @@ ENV/
 .streamlit/secrets.toml
 
 # YOLO / Model Files
-*.pt
 *.onnx
 *.engine
 
