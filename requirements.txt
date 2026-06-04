@@ -5,4 +5,3 @@ numpy
 pillow
 torch
 torchvision
-streamlit-webrtc
