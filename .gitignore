@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# YOLO / Model Files
+*.pt
+*.onnx
+*.engine
+
+# Uploaded Files
+uploads/images/*
+uploads/videos/*
+
+# Output Files
+outputs/images/*
+outputs/videos/*
+outputs/webcam/*
+
+# Keep folders
+!uploads/images/.gitkeep
+!uploads/videos/.gitkeep
+
+!outputs/images/.gitkeep
+!outputs/videos/.gitkeep
+!outputs/webcam/.gitkeep
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Environment Variables
+.env
+
+# SQLite
+*.db
+*.sqlite3
