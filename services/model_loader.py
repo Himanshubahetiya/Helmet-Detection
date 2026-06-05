@@ -1,2 +1,8 @@
 from ultralytics import YOLO
-model = YOLO("model/best.pt")
+import streamlit as st
+
+@st.cache_resource
+def load_model():
+    return YOLO("model/best.pt")
+
+model = load_model()

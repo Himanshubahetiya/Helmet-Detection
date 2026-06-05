@@ -4,17 +4,17 @@ import time
 from services.image_detector import detect_image
 from services.video_detector import detect_video
 from streamlit_webrtc import webrtc_streamer
-from services.webrtc_detector import (
-    HelmetVideoProcessor,
-    LIVE_CACHE_FILE
-)
+# from services.webrtc_detector import (
+#     HelmetVideoProcessor,
+#     LIVE_CACHE_FILE
+# )
 
 # Force strict automated directory configurations
 for folder in ["uploads/images", "uploads/videos", "outputs/images", "outputs/videos"]:
     os.makedirs(folder, exist_ok=True)
 
 # Path asset matching config
-LIVE_CACHE_FILE = "outputs/videos/live_helmet_detection_log.mp4"
+# LIVE_CACHE_FILE = "outputs/videos/live_helmet_detection_log.mp4"
 
 # Initialize persistence memory states for light reruns
 if "cam_active" not in st.session_state:
@@ -183,9 +183,15 @@ st.markdown("""
 
 
 # ---------------- DROP-DOWN CONTROL CENTER ---------------- #
+# option = st.selectbox(
+#     "System Operation Engine",
+#     ["Image Processing", "Video Analytics", "Webcam Telemetry"],
+#     label_visibility="collapsed"
+# )
+
 option = st.selectbox(
     "System Operation Engine",
-    ["Image Processing", "Video Analytics", "Webcam Telemetry"],
+    ["Image Processing", "Video Analytics"],
     label_visibility="collapsed"
 )
 
@@ -259,63 +265,63 @@ elif option == "Video Analytics":
                 st.markdown('</div>', unsafe_allow_html=True)
 
 
-# 3. WEBCAM TELEMETRY LOOP (Unified Design Framework)
-elif option == "Webcam Telemetry":
-    st.markdown(f"<div style='margin-bottom:20px; text-align:center;'><h3 style='font-size:1.2rem; font-weight:600; color:#00ffcc;'>🔴 {option} Engine</h3></div>", unsafe_allow_html=True)
+# # 3. WEBCAM TELEMETRY LOOP (Unified Design Framework)
+# elif option == "Webcam Telemetry":
+#     st.markdown(f"<div style='margin-bottom:20px; text-align:center;'><h3 style='font-size:1.2rem; font-weight:600; color:#00ffcc;'>🔴 {option} Engine</h3></div>", unsafe_allow_html=True)
     
-    web_col1, web_col2 = st.columns([2, 1])
+#     web_col1, web_col2 = st.columns([2, 1])
     
-    with web_col1:
-        # Unified Layout Container eliminates structural gaps completely
-        st.markdown('<div class="webcam-unified-container">', unsafe_allow_html=True)
-        st.markdown('<div class="webcam-header-title">🎥 Live Zero-Latency Core Pipeline Node</div>', unsafe_allow_html=True)
+#     with web_col1:
+#         # Unified Layout Container eliminates structural gaps completely
+#         st.markdown('<div class="webcam-unified-container">', unsafe_allow_html=True)
+#         st.markdown('<div class="webcam-header-title">🎥 Live Zero-Latency Core Pipeline Node</div>', unsafe_allow_html=True)
         
-        ctx = webrtc_streamer(
-            key="helmet-detection-v2",
-            video_processor_factory=HelmetVideoProcessor,
-            media_stream_constraints={"video": True, "audio": False}
-        )
-        st.markdown('</div>', unsafe_allow_html=True)
+#         ctx = webrtc_streamer(
+#             key="helmet-detection-v2",
+#             video_processor_factory=HelmetVideoProcessor,
+#             media_stream_constraints={"video": True, "audio": False}
+#         )
+#         st.markdown('</div>', unsafe_allow_html=True)
         
-        # Monitor streaming status changes
-        if ctx and ctx.state and ctx.state.playing:
-            st.session_state.cam_active = True
-        else:
-            if st.session_state.cam_active:
-                st.session_state.cam_active = False
-                time.sleep(1)
-                st.rerun()
+#         # Monitor streaming status changes
+#         if ctx and ctx.state and ctx.state.playing:
+#             st.session_state.cam_active = True
+#         else:
+#             if st.session_state.cam_active:
+#                 st.session_state.cam_active = False
+#                 time.sleep(1)
+#                 st.rerun()
 
-    # with web_col2:
-    #     st.markdown("""
-    #         <div style="background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.3); padding: 20px; border-radius: 16px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);">
-    #             <h4 style="margin: 0 0 10px 0; color: #ff3b3b; font-size: 0.95rem; font-weight: 600;">🛑 Operational Alert Loop</h4>
-    #             <p style="margin: 0; font-size: 0.85rem; color: #fca5a5; line-height: 1.5;">
-    #                 1. Initialization triggers inside live camera matrix frame layers.<br><br>
-    #                 2. Maintain explicit face structure exposure profile layouts.<br><br>
-    #                 3. AI logic compiles automated safe zone parameters immediately.
-    #             </p>
-    #         </div>
-    #     """, unsafe_allow_html=True)
+#     # with web_col2:
+#     #     st.markdown("""
+#     #         <div style="background: rgba(220, 38, 38, 0.05); border: 1px solid rgba(220, 38, 38, 0.3); padding: 20px; border-radius: 16px; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);">
+#     #             <h4 style="margin: 0 0 10px 0; color: #ff3b3b; font-size: 0.95rem; font-weight: 600;">🛑 Operational Alert Loop</h4>
+#     #             <p style="margin: 0; font-size: 0.85rem; color: #fca5a5; line-height: 1.5;">
+#     #                 1. Initialization triggers inside live camera matrix frame layers.<br><br>
+#     #                 2. Maintain explicit face structure exposure profile layouts.<br><br>
+#     #                 3. AI logic compiles automated safe zone parameters immediately.
+#     #             </p>
+#     #         </div>
+#     #     """, unsafe_allow_html=True)
         
-    #     # Secure memory compilation wrapper rendering section
-    #     if os.path.exists(LIVE_CACHE_FILE) and not st.session_state.cam_active:
-    #         st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
-    #         try:
-    #             with open(LIVE_CACHE_FILE, "rb") as video_asset:
-    #                 video_bytes = video_asset.read()
+#     #     # Secure memory compilation wrapper rendering section
+#     #     if os.path.exists(LIVE_CACHE_FILE) and not st.session_state.cam_active:
+#     #         st.markdown("<div style='margin-top: 20px;'></div>", unsafe_allow_html=True)
+#     #         try:
+#     #             with open(LIVE_CACHE_FILE, "rb") as video_asset:
+#     #                 video_bytes = video_asset.read()
                 
-    #             if len(video_bytes) > 1000: # Ensure file corruption validation parameters match up
-    #                 st.markdown('<div class="dashboard-card" style="border-top: 4px solid #00ffcc !important;"><h4 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; color:#00ffcc;">📦 Compiled Recording Analytics</h4>', unsafe_allow_html=True)
-    #                 st.video(video_bytes) # Playback module
+#     #             if len(video_bytes) > 1000: # Ensure file corruption validation parameters match up
+#     #                 st.markdown('<div class="dashboard-card" style="border-top: 4px solid #00ffcc !important;"><h4 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 15px; color:#00ffcc;">📦 Compiled Recording Analytics</h4>', unsafe_allow_html=True)
+#     #                 st.video(video_bytes) # Playback module
                     
-    #                 st.download_button(
-    #                     label="⬇️ Download WebCam Session MP4",
-    #                     data=video_bytes,
-    #                     file_name="live_helmet_detection_log.mp4",
-    #                     mime="video/mp4",
-    #                     key="webcam-download-btn-v2"
-    #                 )
-    #                 st.markdown('</div>', unsafe_allow_html=True)
-    #         except Exception:
-    #             pass
+#     #                 st.download_button(
+#     #                     label="⬇️ Download WebCam Session MP4",
+#     #                     data=video_bytes,
+#     #                     file_name="live_helmet_detection_log.mp4",
+#     #                     mime="video/mp4",
+#     #                     key="webcam-download-btn-v2"
+#     #                 )
+#     #                 st.markdown('</div>', unsafe_allow_html=True)
+#     #         except Exception:
+#     #             pass

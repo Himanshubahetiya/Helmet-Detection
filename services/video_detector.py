@@ -1,4 +1,5 @@
-from ultralytics import YOLO
+# from ultralytics import YOLO
+
 import cv2
 from services.model_loader import model
 
